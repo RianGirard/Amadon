@@ -5,11 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Amadon</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
     <h3>Thank you for your business!</h3>
-    <p>We charged your credit card for $</p>
-    <p>You have ordered # items so far and spent $$ with Amadon.com!</p>
+    <p>We charged your credit card for ${{request.session.charge}}</p>
+    <p>You have ordered {{request.session.number}} items so far and spent ${{request.session.charge}} with Amadon.com!</p>
+    <p>Sum total of all orders processed: {{request.session.sum_quantity}}</p>
+    <p>Sum total of all charges processed: {{request.session.sum_charge}}</p>
     <p><a href="/">Go Back</a></p>
 </body>
 </html>
